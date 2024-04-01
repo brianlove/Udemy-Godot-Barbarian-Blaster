@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuoihqtto6s0k"]
+[gd_scene load_steps=9 format=3 uid="uid://cuoihqtto6s0k"]
 
 [ext_resource type="MeshLibrary" uid="uid://pbwdfbiwo5i5" path="res://MeshLibraries/SpaceLibrary.tres" id="1_cygfn"]
+[ext_resource type="PackedScene" uid="uid://cqr2sy0fxadp2" path="res://Enemy/Enemy.tscn" id="2_qvx01"]
+[ext_resource type="PackedScene" uid="uid://bfnxrwwcjrghy" path="res://Base/Base.tscn" id="3_0mcqb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6q3r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,10 +22,10 @@ albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_5rtbn"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -22, 0, 6, -1, 0, 1, 1, 0, -1, 14, 0, 6, 1, 0, 1, -1, 0, -1, 14, 0, -2, 1, 0, 1, -1, 0, -1, -2, 0, -2, 0, 0, 2, 0, 0, 0, -2, 0, -6),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -22, 0, 6, -2, 0, 0, 6, 0, 0, 0, 0, 6, -1, 0, 1, 1, 0, -1, 13.25, 0, 5.25, 1, 0, 1, -2, 0, -2, 13.25, 0, -1.25, 2, 0, 2, -1, 0, -1, -1.25, 0, -2.75, 0, 0, 2, 0, 0, 0, -2, 0, -6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
-point_count = 5
+point_count = 6
 
 [node name="BaseLevel" type="Node3D"]
 
@@ -40,7 +42,7 @@ size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_tqpdq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 16, 10)
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 16, 9)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_cygfn")
@@ -91,3 +93,25 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="Enemy" parent="Path3D" instance=ExtResource("2_qvx01")]
+transform = Transform3D(-4.3711e-08, 0, -0.999991, 0, 1, 0, 0.999991, 0, -4.3711e-08, -22, 0, 6)
+
+[node name="Enemy2" parent="Path3D" instance=ExtResource("2_qvx01")]
+transform = Transform3D(-4.3711e-08, 0, -0.999991, 0, 1, 0, 0.999991, 0, -4.3711e-08, -17, 0, 6)
+progress = 5.0
+
+[node name="Enemy3" parent="Path3D" instance=ExtResource("2_qvx01")]
+transform = Transform3D(-4.3711e-08, 0, -0.999991, 0, 1, 0, 0.999991, 0, -4.3711e-08, -12, 0, 6)
+progress = 10.0
+
+[node name="Enemy4" parent="Path3D" instance=ExtResource("2_qvx01")]
+transform = Transform3D(-4.3711e-08, 0, -0.999991, 0, 1, 0, 0.999991, 0, -4.3711e-08, -6.99997, 0, 6)
+progress = 15.0
+
+[node name="Enemy5" parent="Path3D" instance=ExtResource("2_qvx01")]
+transform = Transform3D(-4.3711e-08, 0, -0.999991, 0, 1, 0, 0.999991, 0, -4.3711e-08, -1.99955, 0, 6)
+progress = 20.0
+
+[node name="Base" parent="." instance=ExtResource("3_0mcqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6.5)
