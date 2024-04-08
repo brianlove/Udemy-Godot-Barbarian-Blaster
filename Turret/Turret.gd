@@ -27,10 +27,11 @@ func _on_timer_timeout() -> void:
 func find_best_target() -> PathFollow3D:
 	var current_target = null
 	for enemy in enemy_path.get_children():
-		var distance = global_position.distance_to(enemy.global_position)
-		if enemy is PathFollow3D and distance < range:
-			if current_target == null:
-				current_target = enemy
-			elif enemy.progress > current_target.progress:
-				current_target = enemy
+		if enemy is PathFollow3D:
+			var distance = global_position.distance_to(enemy.global_position)
+			if distance < range:
+				if current_target == null:
+					current_target = enemy
+				elif enemy.progress > current_target.progress:
+					current_target = enemy
 	return current_target
