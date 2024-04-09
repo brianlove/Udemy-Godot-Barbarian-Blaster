@@ -1,8 +1,10 @@
 extends PathFollow3D
 
+@export var bounty: int = 15
 @export var max_health: int = 50
 @export var speed: float = 5
 
+@onready var bank = get_tree().get_first_node_in_group("bank")
 @onready var base = get_tree().get_first_node_in_group("base")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -13,6 +15,7 @@ var current_health: int:
 		current_health = new_health
 		if current_health < 1:
 			queue_free()
+			bank.gold += bounty
 	get:
 		return current_health
 
@@ -27,6 +30,7 @@ func _process(delta: float) -> void:
 	if progress_ratio == 1:
 		base.take_damage()
 		set_process(false)
+		queue_free()
 
 
 func take_damage(damage: int = 1) -> void:

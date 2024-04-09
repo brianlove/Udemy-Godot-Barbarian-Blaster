@@ -9,9 +9,7 @@ var current_health: int:
 		current_health = new_health
 		health_label.text = "{curr}/{max}".format({"curr": current_health, "max": max_health})
 		var health_frac = float(current_health-1) / (max_health-1)
-		print("healthfrac:", health_frac)
 		health_label.modulate = Color.RED.lerp(Color.WHITE, health_frac)
-		print("health updated:", current_health)
 		if current_health < 1:
 			get_tree().reload_current_scene()
 	get:
@@ -24,5 +22,4 @@ func _ready() -> void:
 
 
 func take_damage(damage: int = 1) -> void:
-	print("damage dealt")
 	current_health -= damage
