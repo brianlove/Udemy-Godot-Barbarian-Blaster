@@ -6,21 +6,22 @@ var target: PathFollow3D
 @export var projectile: PackedScene
 @export var turret_range: float = 10.0
 
-@onready var barrel: MeshInstance3D = $TurretBase/TurretTop/Barrel
+@onready var turret_base: MeshInstance3D = $TurretBase
+@onready var cannon: Node3D = $TurretBase/TurretTop/Cannon
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(_delta: float) -> void:
 	target = find_best_target()
 	if target:
-		look_at(target.global_position, Vector3.UP, true)
+		turret_base.look_at(target.global_position, Vector3.UP, true)
 
 
 func _on_timer_timeout() -> void:
 	if target:
 		var shot = projectile.instantiate()
 		add_child(shot)
-		shot.direction = global_transform.basis.z
-		shot.global_position = barrel.global_position
+		shot.direction = turret_base.global_transform.basis.z
+		shot.global_position = cannon.global_position
 		animation_player.play("Fire")
 
 
