@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cuoihqtto6s0k"]
+[gd_scene load_steps=20 format=3 uid="uid://cuoihqtto6s0k"]
 
 [ext_resource type="MeshLibrary" uid="uid://pbwdfbiwo5i5" path="res://MeshLibraries/SpaceLibrary.tres" id="1_cygfn"]
 [ext_resource type="PackedScene" uid="uid://bkmg6ht0bsifv" path="res://RayPickerCamera.tscn" id="1_wvcea"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://EnemyPath.gd" id="3_rqbss"]
 [ext_resource type="Script" path="res://TurretManager.gd" id="5_woex6"]
 [ext_resource type="PackedScene" uid="uid://drcg1qstcdjgw" path="res://Turret/Turret.tscn" id="6_ppeee"]
+[ext_resource type="FontFile" uid="uid://70hyasr32m5j" path="res://assets/Asap/static/Asap-Bold.ttf" id="8_m4gft"]
 [ext_resource type="Script" path="res://Bank.gd" id="8_q0gc1"]
 [ext_resource type="PackedScene" uid="uid://dd4wt7xhj1has" path="res://DifficultyManager/DifficultyManager.tscn" id="9_18qmi"]
 [ext_resource type="PackedScene" uid="uid://bpoi0tw5we6su" path="res://UserInterface/VictoryLayer.tscn" id="10_phm4h"]
@@ -36,6 +37,9 @@ point_count = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5ifo"]
 albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="Theme" id="Theme_ukkeu"]
+default_font = ExtResource("8_m4gft")
 
 [sub_resource type="LabelSettings" id="LabelSettings_w1tq7"]
 font_size = 64
@@ -121,7 +125,6 @@ autostart = true
 
 [node name="Base" parent="." instance=ExtResource("3_0mcqb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6.5)
-max_health = 50
 
 [node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_woex6")
@@ -135,12 +138,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_ukkeu")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 script = ExtResource("8_q0gc1")
-starting_gold = 600
 
 [node name="Label" type="Label" parent="Bank"]
 layout_mode = 2
@@ -148,6 +151,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Placeholder"
 label_settings = SubResource("LabelSettings_w1tq7")
+uppercase = true
 
 [node name="DifficultyManager" parent="." instance=ExtResource("9_18qmi")]
 

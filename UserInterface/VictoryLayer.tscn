@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpoi0tw5we6su"]
+[gd_scene load_steps=6 format=3 uid="uid://bpoi0tw5we6su"]
 
 [ext_resource type="Script" path="res://UserInterface/VictoryLayer.gd" id="1_hvsms"]
 [ext_resource type="Texture2D" uid="uid://bvf0yof1wdeje" path="res://assets/star.png" id="2_avqq6"]
+[ext_resource type="FontFile" uid="uid://70hyasr32m5j" path="res://assets/Asap/static/Asap-Bold.ttf" id="2_mgxmf"]
+
+[sub_resource type="Theme" id="Theme_ukkeu"]
+default_font = ExtResource("2_mgxmf")
 
 [sub_resource type="LabelSettings" id="LabelSettings_lnxpd"]
 font_size = 96
@@ -23,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_ukkeu")
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(400, 400)
@@ -95,6 +100,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 
 [node name="RetryButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
